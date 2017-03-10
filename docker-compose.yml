@@ -1,0 +1,57 @@
+render:
+    build: ./nginx
+    links:
+        - node1:node1
+        - node2:node2
+        - node3:node3
+    ports:
+        - "80:80"
+        - "8080:80"
+node1:
+    build: ./render
+    ports:
+        - "8091:8080"
+    volumes:
+        - /nas:/nas:ro
+        - /nas2:/nas2:ro
+        - /nas3:/nas3:ro
+        - /nas4:/nas4:ro
+    links:
+        - mongo
+node2:
+    build: ./render
+    ports:
+        - "8092:8080"
+    volumes:
+        - /nas:/nas:ro
+        - /nas2:/nas2:ro
+        - /nas3:/nas3:ro
+        - /nas4:/nas4:ro
+    links:
+        - mongo
+node3:
+    build: ./render
+    ports:
+        - "8093:8080"
+    volumes:
+        - /nas:/nas:ro
+        - /nas2:/nas2:ro
+        - /nas3:/nas3:ro
+        - /nas4:/nas4:ro
+    links:
+        - mongo
+mongo:
+    build: ./mongo
+    ports:
+        - "27017:27017"
+    volumes:
+        - /mnt/SSD/mongodb:/data/db
+    restart: always
+
+ndviz:
+   image: ndvizv2:latest
+   ports:
+       - "8889:8000"
+       - "8001:8000"
+   links:
+       - render
