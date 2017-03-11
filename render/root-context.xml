@@ -4,8 +4,7 @@
 <Configure class="org.eclipse.jetty.server.handler.MovedContextHandler">
   <Set name="contextPath">/</Set>
   <Set name="newContextURL">/render-ws/view/</Set>
-  <Set name="permanent">true</Set>
+  <Set name="permanent">false</Set>
   <Set name="discardPathInfo">false</Set>
   <Set name="discardQuery">false</Set>
-
 </Configure>
