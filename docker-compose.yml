@@ -69,7 +69,7 @@ services:
            syslog-address: "udp://localhost:514"
            tag: "rendernode3"
  mongo:
-    build: ./mongo
+    image: mongo:3.4.2
     ports:
         - "27017:27017"
     volumes:
@@ -77,6 +77,8 @@ services:
     restart: always
     links:
        - log:log
+    security_opt:
+      - seccomp:unconfined
  ndviz:
    image: ndvizv2:latest
    ports:
@@ -85,4 +87,3 @@ services:
    links:
        - render
        - log:log
-        
