@@ -5,8 +5,9 @@ services:
   ports:
      - "514:514"
      - "514:514/udp"
-  env_file:
-     - loggly.env
+  environment:
+     - TOKEN={$LOGGLYTOKEN}
+     - TAG=RenderDeployStack
  render:
     build: ./nginx
     links:
