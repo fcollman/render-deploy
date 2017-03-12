@@ -32,7 +32,7 @@
 	<Arg>
                <New class="org.eclipse.jetty.rewrite.handler.RedirectRegexRule">
                     <Set name="regex">^(.*?)/render-ws/view/$</Set>
-                    <Set name="replacement">$1/render-ws/view/index.html?ndvizHost=ibs-forrestc-ux1:8889</Set>
+                    <Set name="replacement">$1/render-ws/view/index.html?ndvizHost=NDVIZHOST</Set>
                     <Set name="terminating">true</Set>
                 </New>
              </Arg>

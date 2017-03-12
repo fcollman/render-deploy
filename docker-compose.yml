@@ -6,7 +6,7 @@ services:
      - "514:514"
      - "514:514/udp"
   environment:
-     - TOKEN={$LOGGLYTOKEN}
+     - TOKEN=$LOGGLYTOKEN
      - TAG=RenderDeployStack
  render:
     build: ./nginx
@@ -19,7 +19,11 @@ services:
         - "80:80"
         - "8080:80" 
  node1:
-    build: ./render
+    build:
+      context: ./render
+      args:
+         NDVIZHOST : $HOSTNAME
+         NDVIZPORT : 8001
     ports:
         - "8091:8080"
     volumes:
@@ -35,6 +39,8 @@ services:
         options:
            syslog-address: "udp://localhost:514"
            tag: "rendernode1"
+    environment:
+        - NDVIZHOST:$HOSTNAME:8001
  node2:
     build: ./render
     ports:
@@ -52,6 +58,8 @@ services:
         options:
            syslog-address: "udp://localhost:514"
            tag: "rendernode2"    
+    environment:
+        - NDVIZHOST:{$HOSTNAME}:8001
  node3:
     build: ./render
     ports:
@@ -69,6 +77,8 @@ services:
         options:
            syslog-address: "udp://localhost:514"
            tag: "rendernode3"
+    environment:
+        - NDVIZHOST:{$HOSTNAME}:8001
  mongo:
     image: mongo:3.4.2
     ports:
