@@ -4,23 +4,22 @@
 <Configure class="org.eclipse.jetty.webapp.WebAppContext">
   <Set name="contextPath">/render-ws</Set>
   <Set name="war">/var/www/render/deploy/jetty_base/render-ws.war</Set>
-
-<!--<New id="Rewrite" class="org.eclipse.jetty.rewrite.handler.RewriteHandler">
-      <Set name="rewriteRequestURI">true</Set>
-      <Set name="rewritePathInfo">false</Set>
-      <Set name="originalPathAttribute">requestedPath</Set>
- 
-       redirect the response. This is a redirect which is visible to the browser.
-           After the redirect, the browser address bar will show /redirected 
-      <Call name="addRule">
-        <Arg>
-          <New class="org.eclipse.jetty.rewrite.handler.RedirectPatternRule">
-            <Set name="pattern">^(.*)$</Set>
-            <Set name="replacement">$1?ndviz=2</Set>
-          </New>
-        </Arg>
-      </Call>
-    </New>
-           
-    <Set name="handler"><Ref id="Rewrite" /></Set> -->
+<!--
+  <New id="Rewrite" class="org.eclipse.jetty.rewrite.handler.RewriteHandler">
+       <Set name="rules">
+         <Array type="org.eclipse.jetty.rewrite.handler.Rule">
+             <Item>
+ 	       <New class="org.eclipse.jetty.rewrite.handler.RewriteRegexRule">
+        	    <Set name="regex">NOTTHERE</Set>
+            	    <Set name="replacement">NEWONE</Set>
+	            <Set name="terminating">true</Set>
+          	</New>
+             </Item> 
+          </Array>
+       </Set>
+  </New>           
+    <Set name="handler">
+	<Ref id="Rewrite" />
+    </Set> 
+-->
 </Configure>

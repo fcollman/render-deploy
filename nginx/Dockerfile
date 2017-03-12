@@ -27,6 +27,7 @@ ADD nginx.conf /etc/nginx/
 # Append "daemon off;" to the configuration file
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
+
 # Expose ports
 EXPOSE 80
 

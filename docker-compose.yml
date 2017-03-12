@@ -1,13 +1,23 @@
-render:
+version: "3.0"
+services:
+ log:
+  build: ./loggly
+  ports:
+     - "514:514"
+     - "514:514/udp"
+  env_file:
+     - loggly.env
+ render:
     build: ./nginx
     links:
         - node1:node1
         - node2:node2
         - node3:node3
+        - log:log
     ports:
         - "80:80"
-        - "8080:80"
-node1:
+        - "8080:80" 
+ node1:
     build: ./render
     ports:
         - "8091:8080"
@@ -18,7 +28,13 @@ node1:
         - /nas4:/nas4:ro
     links:
         - mongo
-node2:
+        - log:log
+    logging:
+        driver: "syslog"
+        options:
+           syslog-address: "udp://localhost:514"
+           tag: "rendernode1"
+ node2:
     build: ./render
     ports:
         - "8092:8080"
@@ -29,7 +45,13 @@ node2:
         - /nas4:/nas4:ro
     links:
         - mongo
-node3:
+        - log:log
+    logging:
+        driver: "syslog"
+        options:
+           syslog-address: "udp://localhost:514"
+           tag: "rendernode2"    
+ node3:
     build: ./render
     ports:
         - "8093:8080"
@@ -40,18 +62,27 @@ node3:
         - /nas4:/nas4:ro
     links:
         - mongo
-mongo:
+        - log:log
+    logging:
+        driver: "syslog"
+        options:
+           syslog-address: "udp://localhost:514"
+           tag: "rendernode3"
+ mongo:
     build: ./mongo
     ports:
         - "27017:27017"
     volumes:
         - /mnt/SSD/mongodb:/data/db
     restart: always
-
-ndviz:
+    links:
+       - log:log
+ ndviz:
    image: ndvizv2:latest
    ports:
        - "8889:8000"
        - "8001:8000"
    links:
        - render
+       - log:log
+        
