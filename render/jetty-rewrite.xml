@@ -30,9 +30,9 @@
 
 	<Call name="addRule">      
 	<Arg>
-               <New class="org.eclipse.jetty.rewrite.handler.RewriteRegexRule">
-                    <Set name="regex">^(.*?)/render-ws/view/(.*)\?(.*)$</Set>
-                    <Set name="replacement">$1/render-ws/view/$2\?$3\&amp;ndviz</Set>
+               <New class="org.eclipse.jetty.rewrite.handler.RedirectRegexRule">
+                    <Set name="regex">^(.*?)/render-ws/view/$</Set>
+                    <Set name="replacement">$1/render-ws/view/index.html?ndvizHost=ibs-forrestc-ux1:8889</Set>
                     <Set name="terminating">true</Set>
                 </New>
              </Arg>
