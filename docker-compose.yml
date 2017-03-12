@@ -1,4 +1,4 @@
-version: "3.0"
+version: "2.0"
 services:
  log:
   build: ./loggly
@@ -19,66 +19,26 @@ services:
         - "80:80"
         - "8080:80" 
  node1:
-    build:
-      context: ./render
-      args:
-         NDVIZHOST : $HOSTNAME
-         NDVIZPORT : 8001
-    ports:
-        - "8091:8080"
-    volumes:
-        - /nas:/nas:ro
-        - /nas2:/nas2:ro
-        - /nas3:/nas3:ro
-        - /nas4:/nas4:ro
+    extends:
+       file: 'common.yml'
+       service: render-node
     links:
-        - mongo
-        - log:log
-    logging:
-        driver: "syslog"
-        options:
-           syslog-address: "udp://localhost:514"
-           tag: "rendernode1"
-    environment:
-        - NDVIZHOST:$HOSTNAME:8001
+       - mongo
+       - log:log
  node2:
-    build: ./render
-    ports:
-        - "8092:8080"
-    volumes:
-        - /nas:/nas:ro
-        - /nas2:/nas2:ro
-        - /nas3:/nas3:ro
-        - /nas4:/nas4:ro
+    extends:
+       file: 'common.yml'
+       service: render-node
     links:
-        - mongo
-        - log:log
-    logging:
-        driver: "syslog"
-        options:
-           syslog-address: "udp://localhost:514"
-           tag: "rendernode2"    
-    environment:
-        - NDVIZHOST:{$HOSTNAME}:8001
+       - mongo
+       - log:log
  node3:
-    build: ./render
-    ports:
-        - "8093:8080"
-    volumes:
-        - /nas:/nas:ro
-        - /nas2:/nas2:ro
-        - /nas3:/nas3:ro
-        - /nas4:/nas4:ro
+    extends:
+       file: 'common.yml'
+       service: render-node
     links:
-        - mongo
-        - log:log
-    logging:
-        driver: "syslog"
-        options:
-           syslog-address: "udp://localhost:514"
-           tag: "rendernode3"
-    environment:
-        - NDVIZHOST:{$HOSTNAME}:8001
+       - mongo
+       - log:log
  mongo:
     image: mongo:3.4.2
     ports:
