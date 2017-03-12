@@ -79,6 +79,11 @@ services:
        - log:log
     security_opt:
       - seccomp:unconfined
+    logging:
+       driver: "syslog"
+       options:
+           syslog-address: "udp://localhost:514"
+           tag: "mongo"
  ndviz:
    image: ndvizv2:latest
    ports:
@@ -86,4 +91,9 @@ services:
        - "8001:8000"
    links:
        - render
-       - log:log
+       - log:log     
+   logging:   
+       driver: "syslog"
+       options:
+           syslog-address: "udp://localhost:514"
+           tag: "ndviz"
