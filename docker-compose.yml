@@ -15,6 +15,7 @@ services:
         - node2:node2
         - node3:node3
         - log:log
+        - ndviz:ndviz
     ports:
         - "80:80"
         - "8080:80"
@@ -58,12 +59,11 @@ services:
            syslog-address: "udp://localhost:514"
            tag: "mongo"
  ndviz:
-   image: ndvizv2:latest
+   image: fcollman/ndviz:latest
    ports:
        - "8889:8000"
        - "8001:8000"
    links:
-       - render
        - log:log     
    logging:   
        driver: "syslog"

@@ -1,5 +1,4 @@
-FROM render:forrest 
-MAINTAINER Forrest Collman (forrestc@alleninstitute.org) 
+FROM fcollman/render:forrest 
 ARG NDVIZHOST=localhost
 ARG NDVIZPORT=8000
 #RUN mv deploy/jetty_base/webapps/render-ws.war deploy/jetty_base/.
