@@ -1,9 +1,8 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
       <appender name="SYSLOG" class="ch.qos.logback.classic.net.SyslogAppender">
         <syslogHost>log:514</syslogHost>
-        <facility>AUTH</facility>
+        <facility>USER</facility>
         <suffixPattern>[%thread] %logger %msg</suffixPattern>
   </appender>
 
@@ -41,6 +40,7 @@
 
     <root level="INFO">
         <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT" />
         <appender-ref ref="SYSLOG" />
     </root>
 

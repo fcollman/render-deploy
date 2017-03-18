@@ -18,7 +18,7 @@ services:
         driver: "syslog"
         options:
            syslog-address: "udp://localhost:514"
-           tag: "rendernode1"
+           tag: "render-node"
     environment:
         - NDVIZHOST:$HOSTNAME:8001
 

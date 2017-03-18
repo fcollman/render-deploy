@@ -28,6 +28,9 @@ services:
     links:
        - mongo
        - log:log
+    logging:
+       options:
+          tag: render-node1
  node2:
     extends:
        file: 'common.yml'
@@ -35,6 +38,9 @@ services:
     links:
        - mongo
        - log:log
+    logging:
+       options:
+          tag: render-node2
  node3:
     extends:
        file: 'common.yml'
@@ -42,6 +48,9 @@ services:
     links:
        - mongo
        - log:log
+    logging:
+       options:
+          tag: render-node3
  mongo:
     image: mongo:3.4.2
     ports:
