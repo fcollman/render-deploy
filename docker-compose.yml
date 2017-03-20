@@ -1,81 +1,23 @@
 version: "2.0"
 services:
- log:
-  build: ./loggly
-  ports:
-     - "514:514"
-     - "514:514/udp"
-  environment:
-     - TOKEN=$LOGGLYTOKEN
-     - TAG=RenderDeployStack
- render:
-    build: ./nginx
+ renderservice:
+    build:
+      context: ./render
     links:
-        - node1:node1
-        - node2:node2
-        - node3:node3
-        - log:log
-        - ndviz:ndviz
+      - mongo
     ports:
-        - "80:80"
-        - "8080:80"
-        - "8082:80" 
-        - "8081:80"
- node1:
-    extends:
-       file: 'common.yml'
-       service: render-node
-    links:
-       - mongo
-       - log:log
-    logging:
-       options:
-          tag: render-node1
- node2:
-    extends:
-       file: 'common.yml'
-       service: render-node
-    links:
-       - mongo
-       - log:log
-    logging:
-       options:
-          tag: render-node2
- node3:
-    extends:
-       file: 'common.yml'
-       service: render-node
-    links:
-       - mongo
-       - log:log
-    logging:
-       options:
-          tag: render-node3
+      - "8080:8080"
  mongo:
     image: mongo:3.4.2
     ports:
-        - "27017:27017"
-    volumes:
-        - /mnt/SSD/mongodb:/data/db
+        - "27017"
     restart: always
-    links:
-       - log:log
     security_opt:
       - seccomp:unconfined
-    logging:
-       driver: "syslog"
-       options:
-           syslog-address: "udp://localhost:514"
-           tag: "mongo"
- ndviz:
-   image: fcollman/ndviz:latest
-   ports:
-       - "8889:8000"
-       - "8001:8000"
+ render-python:
+   image: fcollman/render-python
    links:
-       - log:log     
-   logging:   
-       driver: "syslog"
-       options:
-           syslog-address: "udp://localhost:514"
-           tag: "ndviz"
+     - renderservice
+   volumes:
+     - ./test-reports:/usr/local/render-python/test-reports
+     - ./htmlcov:/usr/local/render-python/htmlcov
