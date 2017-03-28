@@ -14,11 +14,6 @@ services:
         - /nas4:/nas4:ro
     ports:
         - 8080
-    logging:
-        driver: "syslog"
-        options:
-           syslog-address: "udp://localhost:514"
-           tag: "render-node"
     environment:
         - NDVIZHOST:$HOSTNAME:8001
 
