@@ -3,6 +3,8 @@ services:
  renderservice:
     build:
       context: ./render
+    ports:
+      -"8080"
     links:
       - mongo
  mongo:
