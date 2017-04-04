@@ -13,7 +13,8 @@ services:
     security_opt:
       - seccomp:unconfined
  render-python:
-   image: fcollman/render-python:develop
+   build:
+      context: ./render
    links:
      - renderservice
    volumes:
