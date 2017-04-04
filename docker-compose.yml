@@ -3,10 +3,10 @@ services:
  renderservice:
     build:
       context: ./render
+    ports:
+      - "8080"
     links:
       - mongo
-    ports:
-      - "8080:8080"
  mongo:
     image: mongo:3.4.2
     ports:
@@ -15,7 +15,8 @@ services:
     security_opt:
       - seccomp:unconfined
  render-python:
-   image: fcollman/render-python
+   build:
+      context: ./render-python
    links:
      - renderservice
    volumes:
