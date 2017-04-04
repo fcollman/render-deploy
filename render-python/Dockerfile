@@ -1,1 +1,1 @@
-FROM fcollman/render-python:develop
+FROM fcollman/render-python
