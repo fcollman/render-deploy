@@ -11,7 +11,6 @@ services:
     image: mongo:3.4.2
     ports:
         - "27017"
-    restart: always
     security_opt:
       - seccomp:unconfined
  render-python:
