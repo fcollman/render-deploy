@@ -14,7 +14,7 @@ services:
       - seccomp:unconfined
  render-python:
    build:
-      context: ./render
+      context: ./render-python
    links:
      - renderservice
    volumes:
