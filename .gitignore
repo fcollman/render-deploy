@@ -1,0 +1,4 @@
+htmlcov/
+test-reports/
+.cache/
+.DS_Store
