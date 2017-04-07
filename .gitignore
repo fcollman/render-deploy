@@ -2,3 +2,4 @@ htmlcov/
 test-reports/
 .cache/
 .DS_Store
+run_integration_tests.sh
