@@ -1,4 +1,4 @@
-FROM fcollman/render:forrest 
+FROM fcollman/render
 ARG NDVIZHOST=localhost
 ARG NDVIZPORT=8000
 #RUN mv deploy/jetty_base/webapps/render-ws.war deploy/jetty_base/.
