@@ -33,14 +33,23 @@ services:
  mongo:
     image: mongo:3.4.2
     ports:
-        - "27017:27017"
-    volumes:
-        - /mnt/SSD/mongodb:/data/db
+        - "27017"
     restart: always
     security_opt:
       - seccomp:unconfined
  ndviz:
    image: fcollman/ndviz:latest
    ports:
-       - "8889:8000"
        - "8001:8000"
+ redis:
+   image: redis
+   ports:
+       - "6379"
+ notebook:
+   image: fcollman/render-python-apps
+   ports:
+       - "8889:8888"
+   links:
+       - render
+   volumes:
+       - "../render-python-apps/notebooks:/usr/local/render-python-apps/notebook"

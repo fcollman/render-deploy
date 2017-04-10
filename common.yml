@@ -7,11 +7,6 @@ services:
       args:
          NDVIZHOST : $HOSTNAME
          NDVIZPORT : 8001
-    volumes:
-        - /nas:/nas:ro
-        - /nas2:/nas2:ro
-        - /nas3:/nas3:ro
-        - /nas4:/nas4:ro
     ports:
         - 8080
     environment:
