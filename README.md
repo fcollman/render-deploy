@@ -47,7 +47,7 @@ volumes:
     - /nas3:/nas3:ro
     - /nas4:/nas4:ro
 
-These define the locations that the render nodes can access data on the larger host.  Whatever filepaths are written into the render database, render needs to be able read that filepath from within the webservice in order for its image services to work properly.  We have mirrored the mountpoints of our data nas's on our host server within the docker image to simplify how this works.  
+These define the locations that the render nodes can access data on the larger host.  Whatever filepaths are written into the render database, render needs to be able read that filepath from within the webservice inmo order for its image services to work properly.  We have mirrored the mountpoints of our data nas's on our host server within the docker image to simplify how this works.  
 
 Note however that this gives you the opportunity to easily port a render database to a new host where the data mount points have changed.  Say the mongo database has tilespecs where files are located at /nas/subfolder/subsubfolder/image00000.tif, and now you move the data to a new storage mount point, when some hardware is upgraded   /newstorage/olddata/subfolder/subfolder/image00000.tif.
 
