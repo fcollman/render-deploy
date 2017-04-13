@@ -54,9 +54,9 @@ Note however that this gives you the opportunity to easily port a render databas
 You can avoid having to invalidate all of your tilespecs by simply adding a volume mount command of.
 volumes:
     - /newstorage/olddata:/nas:ro
-    - /newstorage/olddata:/newstorage/olddata
+    - /newstorage/olddata:/newstorage/olddata:ro
 
-now within the render docker, the data will be available at both the old mount point and the new mount point, so backward compatibility has been maintained.
+now within the render docker, the data will be available at both the old mount point and the new mount point, so backward compatibility has been maintained.  Note we mount these as read because render has no need to write to these locations.
 
 # render configuration
 The render subfolder contains a dockerfile which modifies the standard render docker to be configured properly for this stack.   This includes some convience functionality which rewrites URLs that point to the root of the render webservice to /render-ws/view/index.html, and autoappends the query parameter that configures the render dashboard to include links to the ndviz service running within this same stack.  
