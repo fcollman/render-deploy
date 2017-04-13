@@ -28,7 +28,7 @@ there are a few that are on docker hub, but we regularly are using docker images
 fcollman/render - the base docker image used to build multiple render nodes
 fcollman/ndviz:latest - a docker image containing an ndviz server configured with the option of making requests to render for images
 
-This also requires that you have docker installed and docker-compose installed with a recent version that supports the docker-compose 2.0 format.
+This also requires that you have docker installed and docker-compose installed with a recent version that supports the docker-compose 2.0 format.  If you build your own versions or branches of render or ndviz, you should either change this to point to your docker tag, or else use this tag.
 
 ## volume mount points
 There are 2 different places mount points are specified and must be configured correctly for the systems you are running this on.
@@ -58,9 +58,6 @@ volumes:
 
 now within the render docker, the data will be available at both the old mount point and the new mount point, so backward compatibility has been maintained.
 
-### testing
-The test branch of this repo illustrates the use of this docker compose framework to spin up a complete testing environment of this stack, in which you have all the components built up from docker images of either the most current production versions of the code base, or a development version of a component which needs to be tested with the other production based elements of the system.  In such a case, the only need for mount points is to remap the locations where test results are going to run to the host filesystem to they can be analyzed.  Here the mongo mount point is removed, and data is written within the docker, and render doesn't have any mounts points.  When the testing stack is deleted, the database is removed and deleted as well.
-
 # render configuration
 The render subfolder contains a dockerfile which modifies the standard render docker to be configured properly for this stack.   This includes some convience functionality which rewrites URLs that point to the root of the render webservice to /render-ws/view/index.html, and autoappends the query parameter that configures the render dashboard to include links to the ndviz service running within this same stack.  
 
@@ -86,3 +83,5 @@ This is convienent in that if you a component appears to become non-responsive y
 
 the refresh_render.sh illustrates a simple script which stops and starts each of the render nodes one after the other, which is useful for dealing with render instances which have run into garbage collection problems and need to be restarted.
 
+### testing
+The test branch of this repo illustrates the use of this docker compose framework to spin up a complete testing environment of this stack, in which you have all the components built up from docker images of either the most current production versions of the code base, or a development version of a component which needs to be tested with the other production based elements of the system.  In such a case, the only need for mount points is to remap the locations where test results are going to run to the host filesystem to they can be analyzed.  Here the mongo mount point is removed, and data is written within the docker, and render doesn't have any mounts points.  When the testing stack is deleted, the database is removed and deleted as well.
