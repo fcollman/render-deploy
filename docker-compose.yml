@@ -5,7 +5,6 @@ services:
     links:
         - node1:node1
         - node2:node2
-        - node3:node3
         - ndviz:ndviz
     ports:
         - "80:80"
@@ -19,12 +18,6 @@ services:
     links:
        - mongo
  node2:
-    extends:
-       file: 'common.yml'
-       service: render-node
-    links:
-       - mongo
- node3:
     extends:
        file: 'common.yml'
        service: render-node
