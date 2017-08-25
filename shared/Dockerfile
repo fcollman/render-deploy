@@ -4,6 +4,6 @@ COPY . /usr/local/base-image
 WORKDIR /usr/local/base-image
 RUN 
 RUN apt-get update \
-&& apt-get install gcc build-essential libgeos-dev imagemagick -y \
+&& apt-get install gcc libgeos-dev imagemagick -y \
 && rm -rf /var/lib/apt/lists/*
 RUN python install_all_requirements.py
