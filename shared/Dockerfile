@@ -2,7 +2,6 @@ FROM continuumio/miniconda
 RUN mkdir -p /usr/local/base-image
 COPY . /usr/local/base-image
 WORKDIR /usr/local/base-image
-RUN 
 RUN apt-get update \
 && apt-get install gcc libgeos-dev imagemagick -y \
 && rm -rf /var/lib/apt/lists/*
