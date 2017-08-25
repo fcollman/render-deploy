@@ -4,27 +4,13 @@ services:
     build: ./nginx
     links:
         - node1:node1
-        - node2:node2
-        - node3:node3
         - ndviz:ndviz
     ports:
         - "80:80"
         - "8080:80"
-        - "8082:80" 
+        - "8082:80"
         - "8081:80"
  node1:
-    extends:
-       file: 'common.yml'
-       service: render-node
-    links:
-       - mongo
- node2:
-    extends:
-       file: 'common.yml'
-       service: render-node
-    links:
-       - mongo
- node3:
     extends:
        file: 'common.yml'
        service: render-node

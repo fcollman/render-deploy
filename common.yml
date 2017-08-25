@@ -15,5 +15,5 @@ services:
     ports:
         - 8080
     environment:
-        - NDVIZHOST:$HOSTNAME:8001
+        - NDVIZHOST:$HOSTNAME:8001    
 
