@@ -6,4 +6,4 @@ RUN mkdir -p /shared
 COPY . /shared
 WORKDIR /shared
 RUN python install_all_requirements.py
-RUN apt-get remove --purge gcc libgeos-dev && apt-get autoremove
+RUN apt-get remove --purge gcc libgeos-dev -y && apt-get autoremove -y
