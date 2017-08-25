@@ -4,7 +4,7 @@ services:
     build:
       context: ./render
     ports:
-      - "8080"
+      - "8080:8080"
     links:
       - mongo
  mongo:
@@ -13,11 +13,11 @@ services:
         - "27017"
     security_opt:
       - seccomp:unconfined
- render-python:
+ render-modules:
    build:
-      context: ./render-python
+      context: ./render-modules
    links:
      - renderservice
    volumes:
-     - ./test-reports:/usr/local/render-python/test-reports
-     - ./htmlcov:/usr/local/render-python/htmlcov
+     - ./test-reports:/usr/local/render-modules/test-reports
+     - ./htmlcov:/usr/local/render-modules/htmlcov
