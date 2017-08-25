@@ -1,5 +1,4 @@
-FROM continuumio/miniconda3
-
+FROM continuumio/miniconda
 RUN apt-get update \
 && apt-get install --no-install-recommends gcc libgeos-dev imagemagick -y \
 && rm -rf /var/lib/apt/lists/*
