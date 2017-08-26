@@ -7,3 +7,4 @@ COPY . /shared
 WORKDIR /shared
 RUN python install_all_requirements.py
 RUN apt-get remove --purge gcc build-essential libgeos-dev -y && apt-get autoremove -y
+ENV RENDER_CLIENT_SCRIPTS=/shared/render/render-ws-java-client/src/scripts
