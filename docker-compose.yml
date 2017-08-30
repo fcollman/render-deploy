@@ -20,8 +20,8 @@ services:
    links:
      - renderservice
    volumes:
-     - ./test-reports:/usr/local/render-python/test-reports
-     - ./htmlcov:/usr/local/render-python/htmlcov
+     - ./test-reports:/shared/render-python/test-reports
+     - ./htmlcov:/shared/render-python/htmlcov
      - ./example_1:/tmp/example_1:ro
    environment:
     - RENDER_EXAMPLE_DATA=/tmp
