@@ -7,6 +7,8 @@ services:
       - "8080"
     links:
       - mongo
+    volumes:
+      - ../example_1:/tmp/example_1:ro
  mongo:
     image: mongo:3.4.2
     ports:
@@ -21,3 +23,6 @@ services:
    volumes:
      - ./test-reports:/usr/local/render-python/test-reports
      - ./htmlcov:/usr/local/render-python/htmlcov
+     - ../example_1:/tmp/example_1:ro
+   environment:
+    - RENDER_EXAMPLE_DATA=/tmp
