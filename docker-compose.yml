@@ -8,7 +8,7 @@ services:
     links:
       - mongo
     volumes:
-      - ../example_1:/tmp/example_1:ro
+      - ./example_1:/tmp/example_1:ro
  mongo:
     image: mongo:3.4.2
     ports:
@@ -22,7 +22,7 @@ services:
    volumes:
      - ./test-reports:/usr/local/render-python/test-reports
      - ./htmlcov:/usr/local/render-python/htmlcov
-     - ../example_1:/tmp/example_1:ro
+     - ./example_1:/tmp/example_1:ro
    environment:
     - RENDER_EXAMPLE_DATA=/tmp
     - RENDER_CLIENT_SCRIPTS=/shared/render/render-ws-java-client/src/main/scripts
