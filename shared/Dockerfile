@@ -15,7 +15,7 @@ RUN mkdir -p /shared
 COPY . /shared
 WORKDIR /shared
 RUN apt-get update && \
-    apt-get install --no-install-recommends gcc build-essential libgeos-dev imagemagick -y &&\
+    apt-get install --no-install-recommends gcc build-essential libgeos-dev imagemagick xvfb -y &&\
     python install_all_requirements.py &&\
     apt-get remove --purge gcc build-essential libgeos-dev -y && apt-get autoremove -y &&\
     rm -rf /var/lib/apt/lists/*
