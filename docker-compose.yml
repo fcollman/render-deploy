@@ -14,10 +14,9 @@ services:
     security_opt:
       - seccomp:unconfined
  render-modules:
-   build:
-      context: ./render-modules
+   image: fcollman/render-modules
    links:
      - renderservice
    volumes:
-     - ./test-reports:/usr/local/render-modules/test-reports
-     - ./htmlcov:/usr/local/render-modules/htmlcov
+     - ./test-reports:/shared/render-modules/test-reports
+     - ./htmlcov:/shared/render-modules/htmlcov
