@@ -7,6 +7,8 @@ services:
       - "8080"
     links:
       - mongo
+    volumes:
+      - /allen:/allen
  mongo:
     image: mongo:3.4.2
     ports:
@@ -20,3 +22,4 @@ services:
    volumes:
      - ./test-reports:/shared/render-modules/test-reports
      - ./htmlcov:/shared/render-modules/htmlcov
+     - /allen:/allen
