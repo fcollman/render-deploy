@@ -1,0 +1,38 @@
+msc {
+ repo[label="GitHub"], 
+ renderCI[label="Render CI",textcolor="blue"], 
+ renderPythonCI[label="render-python CI",textcolor="blue"], 
+ renderPythonIT[label="render-python integration test",textcolor="blue"], 
+ artifact[label="Artifactory",textcolor="red"],
+ renderModulesIT[label="render-modules integration test",textcolor="blue"], 
+
+ deploy[label="Deploy Build",textcolor="blue"];
+ 
+ repo=>renderCI [label="render"];
+ renderCI box renderCI [label="package"];
+ renderCI=>artifact [label="render-app.jar",linecolor="green"];
+ renderCI=>artifact [label="render-ws-spark-client.jar",linecolor="green"];
+ renderCI=>artifact [label="render-ws-java-client.jar",linecolor="green"];
+ renderCI box renderCI [label="docker"];
+ renderCI=>artifact [label="fcollman/render-ws:candidate",linecolor="brown"];
+
+ renderCI=>renderPythonIT;
+
+ repo=>renderPythonCI [label="render-python"];
+ renderPythonCI=>artifact[label="fcollman/render-python-client:$branch",linecolor="brown"];
+
+ renderPythonCI=>renderPythonIT;
+ artifact=>renderPythonIT[label="fcollman/render-ws:candidate",linecolor="brown"];
+ artifact=>renderPythonIT[label="render-ws-java-client.jar",linecolor="green"];
+
+ artifact=>renderPythonIT[label="fcollman/render-python-client:$branch",linecolor="brown"];
+ renderPythonIT=>artifact[label="fcollman/render-python:$branch",linecolor="brown"];
+ renderPythonIT=>repo[label="render-python: merge develop into master"];
+
+ renderPythonIT=>renderModulesIT;
+ repo=>renderModulesIT [label="render-modules"];
+ artifact=>renderModulesIT [label="fcollman/render-python-client:master",linecolor="brown"];
+
+ artifact=>deploy [label="jars"];
+ renderModulesIT=>deploy [label="conda"];
+}
