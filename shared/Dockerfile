@@ -34,5 +34,5 @@ RUN { \
 RUN ln -svT "/usr/lib/jvm/java-8-openjdk-$(dpkg --print-architecture)" /docker-java-home
 ENV JAVA_HOME /docker-java-home
 
-ENV RENDER_CLIENT_SCRIPTS=/shared/render/render-ws-java-client/src/scripts
+ENV RENDER_CLIENT_SCRIPTS=/shared/render/render-ws-java-client/src/main/scripts
 
