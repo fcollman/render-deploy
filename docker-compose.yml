@@ -25,6 +25,7 @@ services:
       - ./htmlcov:/shared/render-modules/htmlcov
       - /allen:/allen
       - ./example_1:/tmp/example_1:ro
+      - .coverage:/shared/render-modules/.coverage
    environment:
       - RENDER_EXAMPLE_DATA=/tmp
       - RENDER_CLIENT_SCRIPTS=/shared/render/render-ws-java-client/src/main/scripts
