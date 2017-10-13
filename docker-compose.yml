@@ -1,32 +1,17 @@
 version: "2.0"
 services:
  render:
-    build: ./nginx
-    links:
-        - node1:node1
-        - ndviz:ndviz
+    image: docker.aibs-artifactory.corp.alleninstitute.org:fcollman/render-ws:staging
     ports:
-        - "80:80"
-        - "8080:80"
-        - "8082:80"
-        - "8081:80"
- node1:
-    extends:
-       file: 'common.yml'
-       service: render-node
+       - 8081:8081
     links:
        - mongo
  mongo:
     image: mongo:3.4.2
     ports:
-        - "27017:27017"
+        - "27017"
     volumes:
-        - /mnt/SSD/mongodb:/data/db
+        - /db_drive/mongo_staging:/data/db
     restart: always
     security_opt:
       - seccomp:unconfined
- ndviz:
-   image: fcollman/ndviz:latest
-   ports:
-       - "8889:8000"
-       - "8001:8000"

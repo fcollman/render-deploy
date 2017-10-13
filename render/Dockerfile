@@ -1,4 +1,4 @@
-FROM fcollman/render
+FROM docker.aibs-artifactory.corp.alleninstitute.org:fcollman/render-ws:staging
 ARG NDVIZHOST=localhost
 ARG NDVIZPORT=8000
 #RUN mv deploy/jetty_base/webapps/render-ws.war deploy/jetty_base/.
