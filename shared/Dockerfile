@@ -1,4 +1,5 @@
 FROM continuumio/miniconda:4.3.27
+RUN conda update conda && conda update python
 #install java
 RUN set -ex && \
     echo 'deb http://deb.debian.org/debian jessie-backports main' \
@@ -35,4 +36,4 @@ RUN ln -svT "/usr/lib/jvm/java-8-openjdk-$(dpkg --print-architecture)" /docker-j
 ENV JAVA_HOME /docker-java-home
 
 ENV RENDER_CLIENT_SCRIPTS=/shared/render/render-ws-java-client/src/main/scripts
-RUN conda update conda && conda update python
+
