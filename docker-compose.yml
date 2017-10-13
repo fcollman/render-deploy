@@ -1,14 +1,14 @@
 version: "2.0"
 services:
  render:
-    image: docker.aibs-artifactory.corp.alleninstitute.org:fcollman/render-ws:staging
+    context: render
     ports:
        - 8081:8081
-    links:
-       - mongo
+    depends_on:
+        - mongo
  mongo:
     image: mongo:3.4.2
-    ports:
+    expose:
         - "27017"
     volumes:
         - /db_drive/mongo_staging:/data/db
