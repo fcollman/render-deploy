@@ -1,7 +1,7 @@
 version: "2.0"
 services:
  render:
-    context: render
+    context: ./render
     ports:
        - 8081:8081
     depends_on:
