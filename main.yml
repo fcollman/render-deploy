@@ -4,7 +4,7 @@
     - name: Get the render-ws image
       docker_image:
         name: docker.aibs-artifactory.corp.alleninstitute.org/fcollman/render-ws
-        tag: "{{ lookup('env','RENDER_WS_TAG') }}"
+        tag: "prod-{{ lookup('env','RENDER_WS_TAG') }}"
         state: present
         force: yes
         pull: yes
@@ -17,7 +17,7 @@
           version: "2.0"
           services:
             render:
-                image: "docker.aibs-artifactory.corp.alleninstitute.org/fcollman/render-ws:{{ lookup('env','RENDER_WS_TAG') }}"
+                image: "docker.aibs-artifactory.corp.alleninstitute.org/fcollman/render-ws:master-{{ lookup('env','RENDER_WS_TAG') }}"
                 ports:
                   - "{{ lookup('env','RENDER_WS_PORT') }}:8080"
                 environment:
