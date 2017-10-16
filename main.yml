@@ -8,8 +8,6 @@
         state: present
         force: yes
         pull: yes
-    - name: Echo my_env_var again
-      shell: "export JAVA_OPTIONS={{java_options}}&&echo $JAVA_OPTIONS"
     - name: Launch render-ws service
       docker_service:
         recreate: always
