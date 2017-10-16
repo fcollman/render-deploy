@@ -4,7 +4,7 @@
     - name: Get the render-ws image
       docker_image:
         name: docker.aibs-artifactory.corp.alleninstitute.org/fcollman/render-ws
-        tag: "master-{{ws_tag}}"
+        tag: "{{ws_tag}}"
         state: present
         force: yes
         pull: yes
@@ -17,7 +17,7 @@
           version: "2.0"
           services:
             render:
-                image: "docker.aibs-artifactory.corp.alleninstitute.org/fcollman/render-ws:master-{{ws_tag}}"
+                image: "docker.aibs-artifactory.corp.alleninstitute.org/fcollman/render-ws:{{ws_tag}}"
                 ports:
                   - "{{ws_port}}:8080"
                 environment:
