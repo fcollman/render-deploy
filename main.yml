@@ -20,7 +20,7 @@
                 build: ./render
                 ports:
                   - "{{ lookup('env','RENDER_WS_PORT') }}:8080"
-                env:
+                environment:
                   - MONGO_HOST=mongo
                   - MONGO_PORT=27017
                 depends_on:
