@@ -1,11 +1,14 @@
 version: "2.0"
 services:
  render:
-    build: ./render
+    image: docker.aibs-artifactory.corp.alleninstitute.org/fcollman/render-ws:${RENDER_WS_TAG}
     ports:
        - 8081:8080
     depends_on:
         - mongo
+    environment:
+        - MONGO_HOST=mongo
+        - MONGO_PORT=27017
  mongo:
     image: mongo:3.4.2
     expose:
