@@ -1,0 +1,11 @@
+renderboxes:
+  hosts:
+    em-131db.corp.alleninstitute.org:
+  vars:
+    compose_project: render-ws-production
+    ws_tag: "master-{{ lookup('env','VERSION') }}"
+    ws_port: 8080
+    db_path: /db_drive/mongo_production
+    ndviz_host: ibs-forrestc-ux1.corp.alleninstitute.org
+    ndviz_port: 8001
+    java_options: -Xms50g -Xmx50g -server -Djava.awt.headless=true

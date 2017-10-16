@@ -4,28 +4,28 @@
     - name: Get the render-ws image
       docker_image:
         name: docker.aibs-artifactory.corp.alleninstitute.org/fcollman/render-ws
-        tag: "master-{{ lookup('env','RENDER_WS_TAG') }}"
+        tag: "master-{{ws_tag}}"
         state: present
         force: yes
         pull: yes
     - name: Launch render-ws service
       docker_service:
         recreate: always
-        project_name: render-ws
+        project_name: "{{compose_project}}"
         state: present
         definition:
           version: "2.0"
           services:
             render:
-                image: "docker.aibs-artifactory.corp.alleninstitute.org/fcollman/render-ws:master-{{ lookup('env','RENDER_WS_TAG') }}"
+                image: "docker.aibs-artifactory.corp.alleninstitute.org/fcollman/render-ws:master-{{ws_tag}}"
                 ports:
-                  - "{{ lookup('env','RENDER_WS_PORT') }}:8080"
+                  - "{{ws_port}}:8080"
                 environment:
                   - MONGO_HOST=mongo
                   - MONGO_PORT=27017
-                  - NDVIZHOST={{ lookup('env','NDVIZHOST') }}
-                  - NDVIZPORT={{ lookup('env','NDVIZPORT') }}
-                  - JAVA_OPTIONS={{lookup('env','JAVA_OPTIONS')}}
+                  - NDVIZHOST="{{ndviz_host}}""
+                  - NDVIZPORT="{{ndviz_port}}""
+                  - JAVA_OPTIONS="{{java_options}}"
                 depends_on:
                     - mongo
             mongo:
@@ -33,7 +33,7 @@
                 expose:
                     - "27017"
                 volumes:
-                    - "{{ lookup('env','RENDER_DBPATH') }}:/data/db"
+                    - "{{db_path}}:/data/db"
                 restart: always
                 security_opt:
                   - seccomp:unconfined
