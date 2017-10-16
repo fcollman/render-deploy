@@ -38,5 +38,6 @@
                 restart: always
                 security_opt:
                   - seccomp:unconfined
+      register: output
     - debug:
-      var: output
+        var: output
