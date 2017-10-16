@@ -13,6 +13,7 @@
         recreate: always
         project_name: "{{compose_project}}"
         state: present
+        debug: yes
         definition:
           version: "2.0"
           services:
