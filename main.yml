@@ -13,7 +13,6 @@
         recreate: always
         project_name: render-ws
         state: present
-        restart: yes
         definition:
           version: "2.0"
           services:
