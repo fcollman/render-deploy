@@ -1,5 +1,5 @@
 - name: Pull celltypes Docker image
-  hosts: renderboxs
+  hosts: renderboxes
   tasks:
     - name: get the image
       docker_image:
