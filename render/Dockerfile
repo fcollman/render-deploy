@@ -1,4 +1,5 @@
-FROM docker.aibs-artifactory.corp.alleninstitute.org/fcollman/render-ws:staging
+ARG RENDER_WS_TAG=production
+FROM docker.aibs-artifactory.corp.alleninstitute.org/fcollman/render-ws:${RENDER_WS_TAG}
 USER root
 ARG NDVIZHOST=localhost
 ARG NDVIZPORT=8000

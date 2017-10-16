@@ -3,7 +3,10 @@ services:
  render:
     build: ./render
     ports:
-       - 8081:8081
+       - 8081:8080
+    env:
+       - MONGO_HOST=mongo
+       - MONGO_PORT=27017
     depends_on:
         - mongo
  mongo:
@@ -11,7 +14,7 @@ services:
     expose:
         - "27017"
     volumes:
-        - /db_drive/mongo_staging:/data/db
+        - ${DBPATH}:/data/db
     restart: always
     security_opt:
       - seccomp:unconfined

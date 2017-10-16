@@ -1,0 +1,40 @@
+- name: Pull celltypes Docker image
+  hosts: renderboxes
+  docker_image:
+    name: docker.aibs-artifactory.corp.alleninstitute.org/fcollman/render-ws:$RENDER_WS_TAG
+    state: present
+    force: yes
+    pull: yes
+  tasks:
+    - name: ping
+      ping:
+    - name: echo
+      shell: echo HELLO WORLD! > hello_world
+# - name: Launch render-ws service
+#   hosts: renderboxes
+#   docker_service:
+#     recreate: always
+#     project_name: render-ws
+#     state: present
+#     restart: yes
+#     definition:
+#       version: "2.0"
+#       services:
+#       render:
+#           build: ./render
+#           ports:
+#             - 8081:8080
+#           env:
+#             - MONGO_HOST=mongo
+#             - MONGO_PORT=27017
+#           depends_on:
+#               - mongo
+#       mongo:
+#           image: mongo:3.4.2
+#           expose:
+#               - "27017"
+#           volumes:
+#               - ${DBPATH}:/data/db
+#           restart: always
+#           security_opt:
+#             - seccomp:unconfined
