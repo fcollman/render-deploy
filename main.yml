@@ -4,7 +4,7 @@
     - name: Get the render-ws image
       docker_image:
         name: docker.aibs-artifactory.corp.alleninstitute.org/fcollman/render-ws
-        tag: "prod-{{ lookup('env','RENDER_WS_TAG') }}"
+        tag: "master-{{ lookup('env','RENDER_WS_TAG') }}"
         state: present
         force: yes
         pull: yes
