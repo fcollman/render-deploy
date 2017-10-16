@@ -1,5 +1,5 @@
 - name: Pull celltypes Docker image
-  hosts: renderboxes
+  hosts: renderboxs
   tasks:
     - name: get the image
       docker_image:
@@ -7,6 +7,8 @@
         state: present
         force: yes
         pull: yes
+      environment:
+        RENDER_WS_TAG: 54
     - name: ping
       ping:
     - name: echo
