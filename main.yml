@@ -3,7 +3,8 @@
   tasks:
     - name: get the image
       docker_image:
-        name: docker.aibs-artifactory.corp.alleninstitute.org/fcollman/render-ws:$RENDER_WS_TAG
+        name: docker.aibs-artifactory.corp.alleninstitute.org/fcollman/render-ws
+        tag: "{{ lookup('env','RENDER_WS_TAG') }}"
         state: present
         force: yes
         pull: yes
