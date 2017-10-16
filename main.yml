@@ -23,6 +23,9 @@
                 environment:
                   - MONGO_HOST=mongo
                   - MONGO_PORT=27017
+                  - NDVIZHOST={{ lookup('env','NDVIZHOST') }}
+                  - NDVIZPORT={{ lookup('env','NDVIZPORT') }}
+                  - JAVA_OPTIONS={{lookup('env','JAVA_OPTIONS')}}
                 depends_on:
                     - mongo
             mongo:
