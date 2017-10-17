@@ -41,3 +41,5 @@
       register: output
     - debug:
         var: output
+    - name: echo java optiosn
+      command: bash -lc '-Xms{{java_memory}} -Xmx{{java_memory}} -server -Djava.awt.headless=true'
