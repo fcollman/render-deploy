@@ -38,5 +38,4 @@
                 restart: always
                 security_opt:
                   - seccomp:unconfined
-      register: output
-    - debug: msg="{{ output.stdout }}"  
+                  
