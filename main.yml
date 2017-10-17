@@ -44,4 +44,4 @@
     - debug:
         var: output
     - name: echo java options
-      command: bash -lc "{{java_options}}"
+      command: bash -lc echo "{{java_options}}"
