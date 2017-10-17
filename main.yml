@@ -26,7 +26,6 @@
                   - MONGO_PORT=27017
                   - NDVIZHOST="{{ndviz_host}}"
                   - NDVIZPORT="{{ndviz_port}}"
-                  - JAVA_OPTIONS="{{ lookup('env','JAVA_OPTIONS') }}""
                 depends_on:
                     - mongo
             mongo:
