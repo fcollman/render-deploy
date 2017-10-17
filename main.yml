@@ -1,6 +1,5 @@
 - name: Deploy render web service
   hosts: renderboxes
-  vars:
     - name: Get the render-ws image
       docker_image:
         name: docker.aibs-artifactory.corp.alleninstitute.org/fcollman/render-ws
@@ -38,4 +37,4 @@
                 restart: always
                 security_opt:
                   - seccomp:unconfined
-                  
+
