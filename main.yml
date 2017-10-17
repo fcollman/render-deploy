@@ -45,3 +45,5 @@
         var: output
     - name: echo java options
       command: bash -lc echo "{{java_options}}"
+      register: test
+    - debug: msg="{{ test.stdout }}"       
