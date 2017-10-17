@@ -1,5 +1,7 @@
 - name: Deploy render web service
   hosts: renderboxes
+  vars:
+    java_options: '-Xms{{java_memory}} -Xmx{{java_memory}} -server -Djava.awt.headless=true'
   tasks:
     - name: Get the render-ws image
       docker_image:
@@ -26,7 +28,7 @@
                   - MONGO_PORT=27017
                   - NDVIZHOST="{{ndviz_host}}"
                   - NDVIZPORT="{{ndviz_port}}"
-                  - JAVA_OPTIONS='-Xms{{java_memory}} -Xmx{{java_memory}} -server -Djava.awt.headless=true'
+                  - JAVA_OPTIONS="{{java_options}}"
                 depends_on:
                     - mongo
             mongo:
@@ -41,5 +43,5 @@
       register: output
     - debug:
         var: output
-    - name: echo java optiosn
-      command: bash -lc '-Xms{{java_memory}} -Xmx{{java_memory}} -server -Djava.awt.headless=true'
+    - name: echo java options
+      command: bash -lc "{{java_options}}"
