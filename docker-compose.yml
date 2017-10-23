@@ -23,7 +23,7 @@ services:
    links:
       - renderservice
       - spark-master
-   depends-on:
+   depends_on:
       - spark-master
    volumes:
       - ./test-reports:/shared/render-modules/test-reports
