@@ -1,7 +1,7 @@
 version: "2.0"
 services:
  renderservice:
-    image: fcollman/render-ws
+    image: docker.aibs-artifactory.corp.alleninstitute.org/fcollman/render-ws:production
     ports:
       - "8080"
     links:
@@ -19,7 +19,7 @@ services:
     security_opt:
       - seccomp:unconfined
  render-modules:
-   image: fcollman/render-modules
+   image: docker.aibs-artifactory.corp.alleninstitute.org/fcollman/render-modules:master
    links:
       - renderservice
       - spark-master
@@ -35,6 +35,20 @@ services:
       - RENDER_EXAMPLE_DATA=/tmp
       - RENDER_CLIENT_SCRIPTS=/shared/render/render-ws-java-client/src/main/scripts
       - MCRROOT=/shared/matlab_runtime
+ blue-sky-worker:
+   build: ./blue_sky_worker
+   volumes:
+      - ./test-reports:/shared/render-modules/test-reports
+      - ./htmlcov:/shared/render-modules/htmlcov
+      - /allen:/allen
+      - ./example_1:/tmp/example_1:ro
+      - /pipeline/MATLAB/MATLAB_Runtime/v91/:/shared/matlab_runtime
+      - ./example_data:/example_data
+   environment:
+      - RENDER_EXAMPLE_DATA=/tmp
+      - RENDER_CLIENT_SCRIPTS=/shared/render/render-ws-java-client/src/main/scripts
+      - MCRROOT=/shared/matlab_runtime
+   command: bash -c "cd /at_em_imaging_workflow && python -m celery -A execution_runner worker --loglevel=debug --concurrency=2"
  spark-master:
     image: gettyimages/spark
     command: bin/spark-class org.apache.spark.deploy.master.Master -h master
