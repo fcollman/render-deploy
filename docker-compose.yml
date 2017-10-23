@@ -68,7 +68,7 @@ services:
       SPARK_WORKER_WEBUI_PORT: 8081
       SPARK_PUBLIC_DNS: localhost
     links:
-      - master
+      - spark-master
     expose:
       - 7012
       - 7013
