@@ -1,4 +1,4 @@
-FROM continuumio/miniconda:4.3.30
+FROM continuumio/miniconda:4.3.27
 RUN conda update conda && conda update python
 #install java
 RUN set -ex && \
