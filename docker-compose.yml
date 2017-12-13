@@ -37,6 +37,7 @@ services:
       - RENDER_CLIENT_SCRIPTS=/shared/render/render-ws-java-client/src/main/scripts
       - MCRROOT=/shared/matlab_runtime
       - SPARK_HOME=/shared/spark
+      - SPARK_MASTER=spark-master
  spark-master:
     image: gettyimages/spark
     command: bin/spark-class org.apache.spark.deploy.master.Master -h master
