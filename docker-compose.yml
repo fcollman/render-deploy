@@ -31,10 +31,12 @@ services:
       - /allen:/allen
       - ./example_1:/tmp/example_1:ro
       - /pipeline/MATLAB/MATLAB_Runtime/v91/:/shared/matlab_runtime
+      - /pipeline/spark:/shared/spark
    environment:
       - RENDER_EXAMPLE_DATA=/tmp
       - RENDER_CLIENT_SCRIPTS=/shared/render/render-ws-java-client/src/main/scripts
       - MCRROOT=/shared/matlab_runtime
+      - SPARK_HOME=/shared/spark
  spark-master:
     image: gettyimages/spark
     command: bin/spark-class org.apache.spark.deploy.master.Master -h master
