@@ -41,7 +41,7 @@ services:
       - SPARK_MASTER=spark-master
  spark-master:
     image: gettyimages/spark
-    command: bin/spark-class org.apache.spark.deploy.master.Master -h master
+    command: bin/spark-class org.apache.spark.deploy.master.Master -h spark-master
     hostname: spark-master
     environment:
       MASTER: spark://spark-master:7077
