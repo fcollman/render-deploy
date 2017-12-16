@@ -35,4 +35,4 @@ services:
       - RENDER_SPARK_JAR=/shared/render/render-ws-spark-client/target/render-ws-spark-client.jar
       - MCRROOT=/shared/matlab_runtime
       - SPARK_HOME=/shared/spark
-      - SPARK_MASTER=local[4]
+      - SPARK_MASTER_URL=local[4]
