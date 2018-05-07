@@ -73,3 +73,11 @@ docker-compose up -d
 .  Note, you can run docker-compose up -d infinitely number of times and it will restart any docker images which were killed off while leaving the components which are still running in place without duplication.
 
 This is convienent in that if you a component appears to become non-responsive you can simply kill it using docker-compose kill NAMEOFSERVICE.
+
+# getting started with render
+
+You should take a look at the render documentation
+https://github.com/saalfeldlab/render
+
+and the render-python user guide
+http://render-python.readthedocs.io/en/latest/guide/index.html
