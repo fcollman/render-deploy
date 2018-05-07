@@ -14,6 +14,9 @@ services:
         - JAVA_OPTIONS=-Xms10g -Xmx10g -server -Djava.awt.headless=true
     volumes:
         - ${PWD}:${PWD}
+    logging:
+        options:
+            max-size: "5g"
  mongo:
     image: mongo:3.4.2
     ports:
