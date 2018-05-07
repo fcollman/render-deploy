@@ -1,0 +1,20 @@
+{
+    "render":
+    {
+        "protocol": "http"
+    },
+    "log_level": "ERROR",
+    "neuroglancer":
+    {
+        "base_url":"http://localhost:8001/",
+        "layer_options":{
+            "opacity":1.0,
+            "shader": "void emitThresholdColorRGB(vec3 rgb) {  \n  float uMin = 0.0;\n  float uMax = 0.5;\n  vec3 uColor = vec3(1.0, 1.0, 1.0);\n  rgb = rgb * uColor; \n  emit(\n  vec4(\n    min( max( (rgb.r - uMin) / uMax, 0.0) , 1.0 ),\n   min( max( (rgb.g - uMin) / uMax, 0.0) , 1.0 ),\n          min( max( (rgb.b - uMin) / uMax, 0.0) , 1.0 ),\n   uOpacity\n      )\n  );\n  }\n\n  void main() {\n    emitThresholdColorRGB(\n  vec3(\n  toNormalized(getDataValue(0)),\n  toNormalized(getDataValue(1)),\n  toNormalized(getDataValue(2))\n  )\n    );\n   }"
+        },
+        "options":
+        {
+            "blend": "additive",
+            "layout": "xy"
+        }
+    }
+}
