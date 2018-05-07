@@ -1,5 +1,5 @@
 # render-deploy
-repo for docker-compose deployment of render stack
+repo for docker-compose deployment of render stack.  This branch is for a multiple node deployment. 
 
 ## purpose of this repo
 The docker compose yaml file contains the configuration of a set of docker containers which together for a working render stack application on a server.  This repo represents the current state of deployment of that docker based render stack that is used at the Allen Institute in the Synapse Biology department, and as such there are some configuration settings which are particular to our setup, but the system is easily reconfigured to be deployed elsewhere, and perhaps we will move to a more standardized configuration model in the near future.
