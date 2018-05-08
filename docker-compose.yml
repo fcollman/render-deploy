@@ -37,3 +37,6 @@ services:
       - MCRROOT=/shared/matlab_runtime
       - SPARK_HOME=/allen/aibs/pipeline/image_processing/volume_assembly/utils/spark
       - SPARK_MASTER_URL=local[4]
+      - RENDER_HOST=renderservice
+      - RENDER_MONGO_HOST=mongo
+      
