@@ -22,6 +22,7 @@ services:
    image: fcollman/render-modules
    links:
       - renderservice
+      - mongo
    volumes:
       - ./test-reports:/shared/render-modules/test-reports
       - ./htmlcov:/shared/render-modules/htmlcov
