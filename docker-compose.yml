@@ -28,13 +28,11 @@ services:
       - ./htmlcov:/shared/render-modules/htmlcov
       - /allen:/allen
       - ./example_1:/tmp/example_1:ro
-      - /pipeline/MATLAB/MATLAB_Runtime/v91/:/shared/matlab_runtime
-      - /pipeline/spark:/shared/spark
    environment:
       - RENDER_EXAMPLE_DATA=/tmp
       - RENDER_CLIENT_SCRIPTS=/shared/render/render-ws-java-client/src/main/scripts
       - RENDER_SPARK_JAR=/shared/render/render-ws-spark-client/target/render-ws-spark-client.jar
-      - MCRROOT=/shared/matlab_runtime
+      - MCRROOT=/allen/aibs/pipeline/image_processing/volume_assembly/MATLAB_Runtime
       - SPARK_HOME=/allen/aibs/pipeline/image_processing/volume_assembly/utils/spark
       - SPARK_MASTER_URL=local[4]
       - RENDER_HOST=renderservice
