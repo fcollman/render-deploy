@@ -1,13 +1,15 @@
-FROM continuumio/miniconda:4.3.27
-RUN conda update conda && conda update python
-#install java
-RUN set -ex && \
-    echo 'deb http://deb.debian.org/debian jessie-backports main' \
-      > /etc/apt/sources.list.d/jessie-backports.list && \
+FROM continuumio/miniconda
+# FROM continuumio/miniconda:4.3.27
+# RUN conda update conda && conda update python
+RUN conda update -y conda && conda install python=2.7
 
-    apt-get update -y && \
-    apt-get install -t \
-      jessie-backports \
+#install java
+# RUN set -ex && \
+#     echo 'deb http://archive.debian.org/debian jessie-backports main' \
+#       > /etc/apt/sources.list.d/jessie-backports.list && \
+
+RUN apt-get update -y && \
+    apt-get install \
       openjdk-8-jre-headless \
       ca-certificates-java -y &&\
     rm -rf /var/lib/apt/lists/*
