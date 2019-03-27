@@ -10,7 +10,7 @@ RUN conda update -y conda && conda install python=2.7
 
 RUN apt-get update -y && \
     apt-get install \
-      openjdk-8-jre-headless \
+      openjdk-8-jre \
       ca-certificates-java -y &&\
     rm -rf /var/lib/apt/lists/*
 
