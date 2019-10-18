@@ -1,5 +1,4 @@
-FROM continuumio/miniconda
-# FROM continuumio/miniconda:4.3.27
+FROM continuumio/miniconda:4.6.14
 # RUN conda update conda && conda update python
 RUN conda update -y conda && conda install python=2.7
 
