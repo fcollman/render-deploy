@@ -1,6 +1,6 @@
 FROM continuumio/miniconda3:4.6.14
-RUN conda update conda && conda update python
-# RUN conda update -y conda && conda install python=2.7
+# RUN conda update conda && conda update python
+RUN conda update -y conda && conda install python=3.7
 
 #install java
 # RUN set -ex && \
